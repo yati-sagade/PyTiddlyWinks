@@ -30,6 +30,31 @@ def get_random_triple(do_clamp=True):
         
     return x, y, r
 #-------------------------------------------------------------------------------
+def get_non_overlapping_triples(n=1):
+    '''
+    returns n non-overlapping triples
+    '''
+    ret = []
+    i = 0
+    while i < n:
+        triple = get_random_triple(True)
+        if i == 0:
+            ret.append(triple)
+            i += 1
+            continue
+        
+        olap = False
+        for t in ret:
+            if overlap(triple, t):
+                olap = True
+                break
+        
+        if not olap:
+            ret.append(triple)
+            i += 1
+    
+    return ret
+#------------------------------------------------------------------------------ 
 def clamped_rand():
     return random() - random()
 #-------------------------------------------------------------------------------

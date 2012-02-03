@@ -18,7 +18,7 @@ pygame.init()
 #   |______|
 # E |   G  | C
 #   |______|
-#      D
+#       D
 #===============================================================================
 A = 0x01
 B = 0x02
@@ -59,7 +59,8 @@ SSD_CHAR_MAP = {
                 
                  # SPACE
                 ' ': off_segments(A, B, C, D, E, F, G),
-                
+                 # I've seen a Motorola cellphone that used  SSDs even for
+                 # displaying texts/contacts etc. So here's the alphabet:
                 'A': off_segments(D),
                 'B': off_segments(A, B),
                 'C': segments(A, D, E, F),
@@ -127,7 +128,6 @@ class SevenSegmentChar(object):
         
         segment_point_pairs = self._get_segment_points()
         for point_pair in segment_point_pairs:
-            print(point_pair)
             if point_pair:
                 pygame.draw.line(self._surface,
                                  self._colour,
@@ -196,7 +196,9 @@ class SevenSegmentChar(object):
                                  point_pair[1],
                                  self._segment_width
                                  )
-            
+    
+    # I might have overdone this properties thing, but I really had nothing 
+    # better to do at the point I wrote this:    
     @property
     def surface(self):
         return self._surface
@@ -260,7 +262,7 @@ class SevenSegmentChar(object):
     def segment_width(self, new):
         self._segment_width = new
         self.update()
-
+#------------------------------------------------------------------------------ 
 class SevenSegmentDisplay(list):
     '''
     The main display class - acts a a container for SevenSegmentChar objects.

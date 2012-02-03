@@ -1,0 +1,34 @@
+PyTiddlyWinks
+=============
+Author: Yati Sagade
+Inspiration: The wonderful AI tutorials at http://www.ai-junkie.com/
+
+
+This is a Python solution to the "TiddlyWinks" problem posed by Fup in his
+excellent tutorial on Genetic Algorithms. The problem is:
+	
+	Given an area that has a number of non overlapping disks scattered 
+	about its surface, use a genetic algorithm to find the disk of largest 
+	radius which may be placed amongst these disks without overlapping any of 
+	them.
+
+settings.py contains a number of settings, which should be played around with.
+
+I've used the wonderful pygame library for the graphics, which can usually be 
+installed with
+
+    $ pip install pygame
+
+or,
+
+    $ easy_install pygame
+
+Now, things get real CPU intensive when the main GA loop is in action - be 
+careful with the settingsfor NUM_GENERATIONS and POP_SIZE, therefore, as these 
+guys determine the loop's running time.	
+
+The number of generations is shown on the top left using a crude 7-segement
+display that resides in sevensegment.py
+
+
+

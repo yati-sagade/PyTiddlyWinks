@@ -8,12 +8,11 @@ from util import *
 from random import random, randint
 from copy import copy
 from sevensegment import SevenSegmentDisplay
-import pygame, sys
+import pygame
+import sys
 import pygame.gfxdraw
 
 pygame.init()
-
-
 #-------------------------------------------------------------------------------
 class GeneticAlgorithmError(Exception):
     pass
@@ -59,7 +58,6 @@ class Chromosome(list):
                 ret.append(s[ctr:(ctr + BITSTRING_LENGTH)])
                 ctr += BITSTRING_LENGTH
             
-            print(ret)
             # Return a tuple of base10 representations of values currently in ret. 
             return tuple(map(lambda x: int(x, 2), ret))
         
@@ -241,8 +239,7 @@ def run_once(scr):
     This function mainly takes care of the rendering.
     '''
     if RANDOM_FIXED_CIRCLES:
-        fixed_circles = [get_random_triple(False) 
-                            for i in xrange(NUM_FIXED_CIRCLES)]
+        fixed_circles = get_non_overlapping_triples(NUM_FIXED_CIRCLES)
     else:
         fixed_circles = FIXED_CIRCLES
     
