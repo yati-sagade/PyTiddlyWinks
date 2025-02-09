@@ -8,6 +8,7 @@ on digital calulators and watches). The display is stored as a pygame surface
 (pygame.Surface object). 
 '''
 import pygame
+from functools import reduce
 pygame.init()
 #===============================================================================
 # Segment codes
@@ -90,11 +91,6 @@ SSD_CHAR_MAP = {
                 'Y': off_segments(A, E),
                 'Z': off_segments(C, F),
                 }
-
-# Add the keys for lowercase characters
-for key in SSD_CHAR_MAP.keys():
-    if key.lower() != key:
-        SSD_CHAR_MAP[key.lower()] = SSD_CHAR_MAP[key]
 #------------------------------------------------------------------------------ 
 class SevenSegmentChar(object):
         
@@ -115,6 +111,7 @@ class SevenSegmentChar(object):
         height: height of this character in pixels - default is 17px.
         segment_width: the width of each segement in the char - default is 2px.
         '''
+        char = char.upper()
         assert char in SSD_CHAR_MAP
         self._char = char
         self._width = width

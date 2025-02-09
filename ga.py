@@ -103,7 +103,7 @@ def mutate(chromosome):
     Returns whether at least one mutation was done or not.
     '''
     mutated = False
-    for i in xrange(len(chromosome)):
+    for i in range(len(chromosome)):
         if random() < MUTATION_RATE:
             mutated = True
             if ENCODING_SCHEME == ENC_BITSTRING:
@@ -160,7 +160,7 @@ def ga_main(fixed_circles, scr):
     # Create initial population
     population = []
     total_fitness = 0
-    for i in xrange(POP_SIZE):
+    for i in range(POP_SIZE):
         data = get_random_triple()
         ch = Chromosome(encode(data), 0)
         total_fitness += evaluate_fitness(ch, fixed_circles)
@@ -183,7 +183,7 @@ def ga_main(fixed_circles, scr):
         # to keep track of the best in each generation
         bests = []
     
-    for i in xrange(NUM_GENERATIONS):
+    for i in range(NUM_GENERATIONS):
         # The run
         new_population = []
         total_new_fitness = 0
